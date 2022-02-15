@@ -20,6 +20,9 @@ public class Conta {
 	private String nomeCliente;
 	
 	@NotNull
+	private String cpf;
+	
+	@NotNull
 	private double saldo;
 
 	public long getId() {
@@ -36,6 +39,15 @@ public class Conta {
 
 	public void setNomeCliente(String nomeCliente) {
 		this.nomeCliente = nomeCliente;
+	}
+	
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 
 	public double getSaldo() {
