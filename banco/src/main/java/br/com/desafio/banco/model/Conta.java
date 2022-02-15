@@ -1,11 +1,16 @@
 package br.com.desafio.banco.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 
 @Entity
@@ -24,6 +29,10 @@ public class Conta {
 	
 	@NotNull
 	private double saldo;
+	
+	@OneToMany(mappedBy = "conta", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("conta")
+	private List<Transacao> transacao;	
 
 	public long getId() {
 		return id;
@@ -56,7 +65,14 @@ public class Conta {
 
 	public void setSaldo(double saldo) {
 		this.saldo = saldo;
-	}	
-	
+	}
+
+	public List<Transacao> getTransacao() {
+		return transacao;
+	}
+
+	public void setTransacao(List<Transacao> transacao) {
+		this.transacao = transacao;
+	}
 	
 }

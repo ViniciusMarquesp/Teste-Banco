@@ -4,8 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 
 @Entity
@@ -24,6 +26,10 @@ public class Fatura {
 	
 	@NotNull
 	private double saldoDisponivel;
+	
+	@ManyToOne
+	@JsonIgnoreProperties("transacao")
+	private Conta conta;
 
 	public long getId() {
 		return id;
@@ -57,5 +63,12 @@ public class Fatura {
 		this.saldoDisponivel = saldoDisponivel;
 	}
 
+	public Conta getConta() {
+		return conta;
+	}
+
+	public void setConta(Conta conta) {
+		this.conta = conta;
+	}
 	
 }
