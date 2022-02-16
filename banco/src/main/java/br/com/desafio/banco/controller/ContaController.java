@@ -1,5 +1,7 @@
 package br.com.desafio.banco.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +25,10 @@ public class ContaController {
 	
 	@Autowired
 	private ContaRepository repository;
+	
+	public ResponseEntity<List<Conta>> GetAll(){
+		return ResponseEntity.ok(repository.findAll());
+	}
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<Conta> GetById(@PathVariable long id){
